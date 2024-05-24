@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú del Restaurante</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.jpg" alt="Logo del Restaurante" class="logo">
+        <nav>
+            <button data-target="desayunos">Desayunos</button>
+            <button data-target="almuerzos">Almuerzos</button>
+            <button data-target="comidas">Comidas</button>
+            <button data-target="entradas">Entradas</button>
+            <button data-target="menu-infantil">Menu Infantil</button>
+            <button data-target="bebidas">Bebidas</button>
+        </nav>
+    </header>
+
+    <section id="desayunos">
+        <h2>Desayunos</h2>
+        <div class="item">
+            <img src="Desayuno.jpeg" alt="Huevos ricos" class="item-img">
+            <button class="vista-rapida-btn">Vista Rápida</button>
+        </div>
+        <div class="item">
+            <img src="Desayuno.jpeg" alt="Huevos ricos" class="item-img">
+            <button class="vista-rapida-btn">Vista Rápida</button>
+        </div>
+        <div class="item">
+            <img src="Desayuno.jpeg" alt="Huevos ricos" class="item-img">
+            <button class="vista-rapida-btn">Vista Rápida</button>
+        </div>
+
+        <!-- Más ítems -->
+    </section>
+    <section id="almuerzos">
+        <h2>Almuerzos</h2>
+        <div class="item">
+            <img src="almuerzo1.jpg" alt="Almuerzo 1" class="item-img">
+            <button class="vista-rapida-btn">Vista Rápida</button>
+        </div>
+    </section>
+
+    <section id="comidas">
+        <h2>Comidas</h2>
+        <div class="item">
+            <img src="almuerzo1.jpg" alt="Comidas" class="item-img">
+            <button class="vista-rapida-btn">Vista Rápida</button>
+            <img src="almuerzo2.jpg" alt="Comidas" class="item-img">
+            <button class="vista-rapida-btn">Vista Rápida</button>            
+        </div>
+
+    <section id="entradas">
+        <h2>Entradas</h2>
+        <div class="item">
+            <img src="almuerzo1.jpg" alt="Almuerzo 1" class="item-img">
+            <button class="vista-rapida-btn">Vista Rápida</button>
+            </div>
+        </section>
+
+    <section id="entradas">
+         <h2>Entradas</h2>
+        <div class="item">
+             <img src="almuerzo1.jpg" alt="Almuerzo 1" class="item-img">
+            <button class="vista-rapida-btn">Vista Rápida</button>
+             </div>
+         </section>
+    <section id="menu-infantil">
+         <h2>Menu Infantil</h2>
+         <div class="item">
+             <img src="almuerzo1.jpg" alt="Almuerzo 1" class="item-img">
+             <button class="vista-rapida-btn">Vista Rápida</button>
+             </div>
+
+    <section id="bebidas">
+         <h2>Bebidas</h2>
+         <div class="item">
+             <img src="almuerzo1.jpg" alt="Almuerzo 1" class="item-img">
+             <button class="vista-rapida-btn">Vista Rápida</button>
+             </div>   
+
+         </section>
+
+    </section>
+    <!-- Más secciones -->
+
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-img">
+        <div id="caption"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('nav button');
+            buttons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const target = e.target.getAttribute('data-target');
+                    document.getElementById(target).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            const modal = document.getElementById("modal");
+            const modalImg = document.getElementById("modal-img");
+            const captionText = document.getElementById("caption");
+            const closeBtn = document.querySelector(".close");
+
+            document.querySelectorAll('.vista-rapida-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const img = e.target.previousElementSibling;
+                    modal.style.display = "block";
+                    modalImg.src = img.src;
+                    captionText.innerHTML = img.alt;
+                });
+            });
+
+            closeBtn.onclick = function() { 
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
